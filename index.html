@@ -1011,9 +1011,8 @@ function goTo(target) {
       to.style.transition = to.style.transform = to.style.opacity = '';
       busy = false;
       if (target === 1 && !counterDone) { counterDone = true; animateCounter(); }
-      if (target === 11 && !barsDone) { barsDone = true; setTimeout(animateBars, 600); }
-      if (target === 12 && !pctDone) { pctDone = true; setTimeout(animatePct, 700); }
-      if (target === 17 && !qrDone) { qrDone = true; drawQR(); }
+      if (target === 10 && !barsDone) { barsDone = true; setTimeout(animateBars, 600); }
+      if (target === TOTAL - 1 && !qrDone) { qrDone = true; drawQR(); }
     }, 440);
   }));
   current = target;
