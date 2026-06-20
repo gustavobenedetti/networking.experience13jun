@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Diagnóstico de Maturidade Comercial — Gustavo Benedetti</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050505; --card: #161616; --border: #2A2A2A;
+  --accent: #FAFAFA; --red: #EF4444; --green: #22C55E;
+  --text: #D4D4D4; --muted: #6B6B6B; --white: #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; min-height: 100%; }
+body {
+  background: var(--bg); font-family: 'Montserrat', sans-serif; color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh; display: flex; flex-direction: column;
+  position: relative; overflow-x: hidden;
+}
+.grid-bg {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.glow-orb { position: fixed; border-radius: 50%; pointer-events: none; opacity: .05; filter: blur(80px); z-index: 0; background: var(--white); width: 480px; height: 480px; left:50%; top:-120px; transform: translateX(-50%); }
+
+/* TOP BAR */
+.topbar {
+  position: relative; z-index: 5;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 18px 20px 0;
+}
+.topbar-brand { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.progress-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width .5s cubic-bezier(.16,1,.3,1); }
+
+/* MAIN */
+main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 18px 40px; position: relative; z-index: 2; }
+.screen { width: 100%; max-width: 480px; opacity: 0; transform: translateY(14px); transition: opacity .45s ease, transform .45s ease; display: none; }
+.screen.active { opacity: 1; transform: translateY(0); display: block; }
+
+/* INTRO */
+.intro-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; text-align: center; }
+.intro-title { font-size: clamp(28px, 8vw, 38px); font-weight: 900; letter-spacing: -.03em; line-height: 1.05; color: var(--white); text-align: center; margin-bottom: 14px; }
+.intro-desc { font-size: 14px; color: var(--muted); line-height: 1.65; text-align: center; margin-bottom: 28px; }
+.intro-stages { display: flex; justify-content: center; gap: 6px; margin-bottom: 30px; }
+.intro-stage-dot { flex: 1; max-width: 70px; height: 4px; border-radius: 2px; background: var(--border); position: relative; }
+.intro-stage-dot::after { content: attr(data-label); position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 8px; color: var(--muted); white-space: nowrap; letter-spacing: .04em; }
+.field-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; display: block; }
+.field-input {
+  width: 100%; background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px; font-size: 16px; color: var(--white);
+  font-family: 'Montserrat', sans-serif; margin-bottom: 22px;
+  outline: none; transition: border-color .2s;
+}
+.field-input:focus { border-color: var(--accent); }
+.field-input::placeholder { color: var(--muted); }
+.btn-primary {
+  width: 100%; background: var(--white); color: #050505; border: none;
+  border-radius: 12px; padding: 17px; font-size: 14px; font-weight: 800;
+  letter-spacing: .03em; cursor: pointer; transition: all .2s;
+  font-family: 'Montserrat', sans-serif;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,.12); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: .35; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* QUESTION */
+.q-counter { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); text-align: center; margin-bottom: 10px; letter-spacing: .08em; }
+.q-axis { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); text-align: center; margin-bottom: 16px; }
+.q-text { font-size: clamp(19px, 5vw, 24px); font-weight: 800; color: var(--white); line-height: 1.3; text-align: center; margin-bottom: 26px; letter-spacing: -.01em; }
+.q-options { display: flex; flex-direction: column; gap: 10px; }
+.q-option {
+  background: var(--card); border: 1px solid var(--border); border-radius: 13px;
+  padding: 16px 18px; text-align: left; cursor: pointer; transition: all .2s;
+  font-family: 'Montserrat', sans-serif; font-size: 13.5px; color: var(--text); line-height: 1.5;
+  display: flex; align-items: center; gap: 12px;
+}
+.q-option:hover { border-color: rgba(255,255,255,.3); background: #1d1d1d; }
+.q-option.selected { border-color: var(--white); background: rgba(255,255,255,.06); color: var(--white); }
+.q-option-letter {
+  width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); font-weight: 700;
+}
+.q-option.selected .q-option-letter { border-color: var(--white); color: var(--white); background: rgba(255,255,255,.1); }
+.q-back { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; cursor: pointer; margin-top: 22px; justify-content: center; transition: color .2s; }
+.q-back:hover { color: var(--text); }
+
+/* CALCULATING */
+.calc-wrap { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px 0; }
+.calc-spinner { width: 44px; height: 44px; border: 2px solid var(--border); border-top-color: var(--white); border-radius: 50%; animation: spin .8s linear infinite; margin-bottom: 22px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.calc-text { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+
+/* RESULT */
+.res-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 10px; }
+.res-stage-track { display: flex; gap: 5px; justify-content: center; margin-bottom: 22px; }
+.res-stage-seg { flex: 1; max-width: 60px; height: 5px; border-radius: 3px; background: var(--border); }
+.res-stage-seg.filled { background: var(--white); }
+.res-title { font-size: clamp(26px, 8vw, 36px); font-weight: 900; letter-spacing: -.03em; color: var(--white); text-align: center; line-height: 1.05; margin-bottom: 6px; }
+.res-score { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 26px; }
+.res-score strong { color: var(--text); }
+.res-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 22px 20px; margin-bottom: 22px; position: relative; overflow: hidden;
+}
+.res-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--res-clr, var(--accent)); }
+.res-tag {
+  display: inline-flex; align-items: center; gap: 6px; font-size: 9px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px;
+  margin-bottom: 14px; color: var(--res-clr, var(--accent)); border: 1px solid var(--res-clr, var(--accent));
+}
+.res-text { font-size: 13.5px; color: var(--text); line-height: 1.7; }
+.res-text strong { color: var(--white); }
+.btn-whatsapp {
+  width: 100%; background: var(--white); color: #050505; border: none;
+  border-radius: 14px; padding: 18px; font-size: 14px; font-weight: 800;
+  letter-spacing: .02em; cursor: pointer; text-decoration: none;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: 'Montserrat', sans-serif; transition: all .2s; margin-bottom: 14px;
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,.12); }
+.res-note { font-size: 11px; color: var(--muted); text-align: center; line-height: 1.6; }
+
+footer { position: relative; z-index: 2; text-align: center; padding: 0 18px 24px; font-size: 9px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div><div class="glow-orb"></div>
+
+<div class="topbar">
+  <div class="topbar-brand">Diagnóstico · Gustavo Benedetti</div>
+  <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+</div>
+
+<main>
+
+  <!-- INTRO -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-eyebrow">Mapa de Maturidade Comercial</div>
+    <h1 class="intro-title">Em que estágio<br>está o seu comercial?</h1>
+    <p class="intro-desc">8 perguntas rápidas. Ao final, você descobre exatamente em qual dos 4 estágios sua empresa está hoje — e o que falta para o próximo.</p>
+    <label class="field-label" for="nameInput">Seu nome</label>
+    <input class="field-input" id="nameInput" type="text" placeholder="Como podemos te chamar?" autocomplete="off">
+    <button class="btn-primary" id="startBtn" disabled>Começar diagnóstico</button>
+  </div>
+
+  <!-- QUESTION (template, conteúdo injetado via JS) -->
+  <div class="screen" id="screen-question">
+    <div class="q-counter" id="qCounter">PERGUNTA 1 / 8</div>
+    <div class="q-axis" id="qAxis">VISIBILIDADE</div>
+    <div class="q-text" id="qText"></div>
+    <div class="q-options" id="qOptions"></div>
+    <div class="q-back" id="qBack">← Voltar</div>
+  </div>
+
+  <!-- CALCULATING -->
+  <div class="screen" id="screen-calc">
+    <div class="calc-wrap">
+      <div class="calc-spinner"></div>
+      <div class="calc-text">Calculando seu estágio de maturidade...</div>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="screen" id="screen-result">
+    <div class="res-eyebrow" id="resGreeting">Resultado de</div>
+    <div class="res-stage-track" id="resTrack"></div>
+    <h2 class="res-title" id="resTitle"></h2>
+    <div class="res-score" id="resScore"></div>
+    <div class="res-card" id="resCard">
+      <span class="res-tag" id="resTag"></span>
+      <p class="res-text" id="resText"></p>
+    </div>
+    <a class="btn-whatsapp" id="waBtn" href="#" target="_blank" rel="noopener">
+      <span>📲</span><span>Enviar resultado no WhatsApp</span>
+    </a>
+    <p class="res-note">Toque para enviar seu resultado direto para Gustavo — ele responde pessoalmente.</p>
+  </div>
+
+</main>
+
+<footer>Processo Comercial · Mapa de Maturidade</footer>
+
+<script>
+/* ════════ CONFIG ════════ */
+const WHATSAPP_NUMBER = '5548984649886';
+
+/* ════════ PERGUNTAS ════════ */
+/* Cada opção vale de 1 (Caótico) a 4 (Previsível) pontos */
+const QUESTIONS = [
+  {
+    axis: 'Visibilidade',
+    text: 'Como você sabe em que etapa cada oportunidade está, agora?',
+    options: [
+      'Não sei dizer — depende da memória do vendedor',
+      'Tenho uma planilha, mas raramente está atualizada',
+      'Uso CRM, mas com falhas e dados incompletos',
+      'CRM atualizado em tempo real — decido com base nele'
+    ]
+  },
+  {
+    axis: 'Visibilidade',
+    text: 'Quando um vendedor sai da empresa, o que acontece com as oportunidades dele?',
+    options: [
+      'Se perdem, ou ninguém sabe o histórico',
+      'Outro vendedor tenta reconstruir do zero',
+      'O histórico existe, mas leva tempo para repassar',
+      'Qualquer pessoa assume sem perda de contexto'
+    ]
+  },
+  {
+    axis: 'Processo',
+    text: 'As etapas do seu processo comercial são…',
+    options: [
+      'Não existem etapas formais — cada um faz do seu jeito',
+      'Existem no papel, mas raramente seguidas',
+      'Definidas e seguidas na maior parte do tempo',
+      'Definidas, com critério claro de avanço entre elas'
+    ]
+  },
+  {
+    axis: 'Processo',
+    text: 'Existe um material (playbook ou script) que orienta como conduzir a venda?',
+    options: [
+      'Não — cada vendedor improvisa',
+      'Existe, mas está desatualizado ou ninguém usa',
+      'Existe e é usado, mas raramente revisado',
+      'Existe, é vivo, testado e adaptado por canal e produto'
+    ]
+  },
+  {
+    axis: 'Cadência',
+    text: 'Como funciona o follow-up de leads que não respondem de imediato?',
+    options: [
+      'Se não responde, é descartado',
+      'Follow-up acontece, mas sem prazo ou regra definida',
+      'Existe uma cadência, mas nem sempre é cumprida',
+      'Cadência programada e cumprida, com regra de reengajamento'
+    ]
+  },
+  {
+    axis: 'Cadência',
+    text: 'Em quanto tempo, em média, um lead recebe a primeira resposta?',
+    options: [
+      'Não sei dizer — varia muito',
+      'Em algumas horas, às vezes no mesmo dia',
+      'Em até 1 hora, na maioria dos casos',
+      'Resposta imediata, com protocolo definido'
+    ]
+  },
+  {
+    axis: 'Gestão',
+    text: 'Como é a gestão do time comercial hoje?',
+    options: [
+      'Só se olha o resultado no fim do mês',
+      'Reunião acontece, mas sem dados estruturados',
+      'Reunião semanal com pipeline, decisões pontuais',
+      'Rituais semanais com métricas de atividade, não só resultado'
+    ]
+  },
+  {
+    axis: 'Gestão',
+    text: 'Se o resultado cair no mês que vem, você sabe dizer, hoje, qual etapa travou?',
+    options: [
+      'Não tenho essa visibilidade',
+      'Eu teria que investigar para descobrir',
+      'Tenho uma ideia, mas não com precisão',
+      'Sei exatamente — acompanho taxa de avanço por etapa'
+    ]
+  }
+];
+
+/* ════════ ESTÁGIOS ════════ */
+const STAGES = [
+  {
+    min: 8, max: 13, name: 'Caótico', idx: 1, clr: '#EF4444',
+    tag: '⚠ Alerta',
+    text: 'Seu comercial roda no impulso e na memória dos vendedores. Isso significa que, toda vez que alguém sai da empresa, parte do conhecimento vai junto — e o crescimento depende de sorte, não de sistema. <strong>A boa notícia: esse é o estágio mais fácil de sair</strong>, porque qualquer estrutura básica já gera ganho imediato.'
+  },
+  {
+    min: 14, max: 19, name: 'Reativo', idx: 2, clr: '#EF4444',
+    tag: '⚠ Ponto de atenção',
+    text: 'Você já tem peças do processo — CRM, algum script, alguma cadência — mas elas não conversam entre si. O time apaga incêndio em vez de seguir um fluxo. <strong>O risco aqui é achar que "já tem processo" e parar de evoluir</strong> — porque o que existe hoje não escala além de um certo tamanho de time.'
+  },
+  {
+    min: 20, max: 25, name: 'Estruturado', idx: 3, clr: '#22C55E',
+    tag: '✓ Acima da média',
+    text: 'Seu comercial já tem disciplina: etapas claras, follow-up com regra, reuniões de pipeline. Isso já coloca você à frente da maioria das empresas do seu porte. <strong>O que falta para o próximo nível é tornar a gestão preditiva</strong>, não só organizada — acompanhar taxa de avanço por etapa, não só o resultado final do mês.'
+  },
+  {
+    min: 26, max: 32, name: 'Previsível', idx: 4, clr: '#22C55E',
+    tag: '✓ Elite',
+    text: 'Seu comercial já opera como sistema, não como esforço individual. Isso coloca sua empresa entre a minoria que realmente profissionalizou o processo. <strong>A próxima fronteira não é mais estruturar — é escalar sem perder qualidade:</strong> arquitetura de time, unit economics e capacity planning são os próximos degraus.'
+  }
+];
+
+/* ════════ ESTADO ════════ */
+let userName = '';
+let currentQ = 0;
+let answers = new Array(QUESTIONS.length).fill(null);
+
+const screens = {
+  intro: document.getElementById('screen-intro'),
+  question: document.getElementById('screen-question'),
+  calc: document.getElementById('screen-calc'),
+  result: document.getElementById('screen-result')
+};
+const progressFill = document.getElementById('progress');
+
+function showScreen(name) {
+  Object.values(screens).forEach(s => s.classList.remove('active'));
+  screens[name].classList.add('active');
+}
+
+function updateProgress(frac) {
+  progressFill.style.width = (frac * 100) + '%';
+}
+
+/* INTRO */
+const nameInput = document.getElementById('nameInput');
+const startBtn = document.getElementById('startBtn');
+nameInput.addEventListener('input', () => {
+  startBtn.disabled = nameInput.value.trim().length < 2;
+});
+nameInput.addEventListener('keydown', e => { if (e.key === 'Enter' && !startBtn.disabled) startBtn.click(); });
+startBtn.addEventListener('click', () => {
+  userName = nameInput.value.trim();
+  currentQ = 0;
+  renderQuestion();
+  showScreen('question');
+});
+
+/* QUESTION RENDER */
+const qCounter = document.getElementById('qCounter');
+const qAxis = document.getElementById('qAxis');
+const qText = document.getElementById('qText');
+const qOptions = document.getElementById('qOptions');
+const qBack = document.getElementById('qBack');
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  qCounter.textContent = `PERGUNTA ${currentQ + 1} / ${QUESTIONS.length}`;
+  qAxis.textContent = q.axis.toUpperCase();
+  qText.textContent = q.text;
+  updateProgress(currentQ / QUESTIONS.length);
+
+  qOptions.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'q-option' + (answers[currentQ] === i + 1 ? ' selected' : '');
+    div.innerHTML = `<span class="q-option-letter">${letters[i]}</span><span>${opt}</span>`;
+    div.addEventListener('click', () => selectAnswer(i + 1));
+    qOptions.appendChild(div);
+  });
+
+  qBack.style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+}
+
+function selectAnswer(points) {
+  answers[currentQ] = points;
+  renderQuestion();
+  setTimeout(() => {
+    if (currentQ < QUESTIONS.length - 1) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      updateProgress(1);
+      showScreen('calc');
+      setTimeout(computeResult, 1400);
+    }
+  }, 280);
+}
+
+qBack.addEventListener('click', () => {
+  if (currentQ > 0) { currentQ--; renderQuestion(); }
+});
+
+/* RESULT */
+function computeResult() {
+  const total = answers.reduce((a, b) => a + b, 0);
+  const stage = STAGES.find(s => total >= s.min && total <= s.max) || STAGES[0];
+
+  document.getElementById('resGreeting').textContent = `Resultado de ${userName}`;
+  document.getElementById('resTitle').textContent = stage.name;
+  document.getElementById('resScore').innerHTML = `Estágio ${stage.idx} de 4 &nbsp;·&nbsp; <strong>${total}/32 pontos</strong>`;
+
+  const track = document.getElementById('resTrack');
+  track.innerHTML = '';
+  for (let i = 1; i <= 4; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'res-stage-seg' + (i <= stage.idx ? ' filled' : '');
+    track.appendChild(seg);
+  }
+
+  document.getElementById('resCard').style.setProperty('--res-clr', stage.clr);
+  document.getElementById('resTag').textContent = stage.tag;
+  document.getElementById('resTag').style.color = stage.clr;
+  document.getElementById('resTag').style.borderColor = stage.clr;
+  document.getElementById('resText').innerHTML = stage.text;
+
+  const msg = `Olá! Meu nome é ${userName}!\nAcabei de fazer o Diagnóstico de Maturidade Comercial, e meu resultado foi: *${stage.name}* (${total}/32 pontos).\n\nQuero entender como sair desse estágio!`;
+  document.getElementById('waBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+  showScreen('result');
+}
+</script>
+</body>
+</html>
