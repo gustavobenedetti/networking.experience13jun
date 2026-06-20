@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Processo Comercial — Gustavo Benedetti</title>
+<title>Processo Comercial Avançado — Gustavo Benedetti</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #070707; --card: #181818; --border: #242424;
-  --accent: #3B82F6; --purple: #3B82F6; --orange: #64748B;
-  --blue: #38BDF8; --red: #EF4444; --green: #22C55E;
-  --yellow: #64748B; --pink: #64748B;
-  --text: #E0E0E0; --muted: #666; --white: #FFFFFF;
+  --bg: #050505; --card: #161616; --border: #2A2A2A;
+  --accent: #FAFAFA; --purple: #A3A3A3; --orange: #737373;
+  --blue: #D4D4D4; --red: #EF4444; --green: #22C55E;
+  --yellow: #8A8A8A; --pink: #525252;
+  --text: #D4D4D4; --muted: #6B6B6B; --white: #FFFFFF;
   --nav-h: 56px; --bar-h: 60px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -205,7 +205,7 @@ nav {
 .versus-scenarios { display: flex; flex-direction: column; gap: 12px; }
 .scenario-card { border-radius: 13px; padding: 20px 18px; border: 1px solid; position: relative; overflow: hidden; }
 .scenario-card.bad { background: rgba(239,68,68,.06); border-color: rgba(239,68,68,.2); }
-.scenario-card.good { background: rgba(59,130,246,.06); border-color: rgba(59,130,246,.2); }
+.scenario-card.good { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.18); }
 .scenario-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
 .scenario-card.bad::before { background: var(--red); }
 .scenario-card.good::before { background: var(--accent); }
@@ -410,19 +410,197 @@ nav {
 .ig-at { font-family: 'Space Mono', monospace; font-size: clamp(15px, 4vw, 20px); font-weight: 700; color: var(--accent); }
 .ig-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .13em; margin-top: 3px; }
 .ig-icon { font-size: 28px; opacity: .6; margin-left: auto; }
-.qr-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 9px; flex-shrink: 0; }
-.qr-inner { background: white; padding: 7px; border-radius: 7px; }
+.qr-block { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 9px; flex-shrink: 0; }
+.qr-inner { background: white; padding: 14px; border-radius: 12px; }
 .qr-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
 .cta-sub { font-size: clamp(12px, 2vw, 14px); color: var(--muted); max-width: 420px; line-height: 1.65; }
+
+/* ── BLOCO TÉCNICO (Arquitetura / Unit Econ / Pipeline / Capacity) ── */
+.tec-wrap { position: relative; z-index: 1; width: 100%; max-width: 1100px; }
+.tec-hdr { margin-bottom: 22px; text-align: left; }
+.tec-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.tec-title { font-size: clamp(26px, 6vw, 50px); font-weight: 900; letter-spacing: -.03em; color: var(--white); line-height: .95; margin-bottom: 10px; }
+.tec-title span { color: var(--accent); }
+.tec-sub { font-size: clamp(12px, 2vw, 14px); color: var(--muted); line-height: 1.65; max-width: 620px; }
+.tec-disclaimer {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border);
+  border-radius: 20px; padding: 6px 14px; margin-top: 12px;
+  font-size: 10px; color: var(--muted); letter-spacing: .04em;
+}
+.tec-disclaimer strong { color: var(--text); font-weight: 700; }
+
+/* Arquitetura comercial — funil de papéis */
+.arq-flow { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+@media (min-width: 760px) { .arq-flow { flex-direction: row; align-items: stretch; } }
+.arq-card {
+  flex: 1; background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 18px; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.arq-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--arq-clr, var(--accent)); }
+.arq-num { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: .12em; margin-bottom: 10px; }
+.arq-role { font-size: clamp(15px, 2.6vw, 19px); font-weight: 800; color: var(--white); margin-bottom: 4px; }
+.arq-role-en { font-size: 10px; color: var(--muted); font-family: 'Space Mono', monospace; margin-bottom: 12px; }
+.arq-desc { font-size: 12px; color: var(--text); line-height: 1.6; flex: 1; }
+.arq-arrow { display: none; align-items: center; justify-content: center; color: var(--border); font-size: 18px; flex-shrink: 0; padding: 0 2px; }
+@media (min-width: 760px) { .arq-arrow { display: flex; } }
+.arq-source {
+  background: var(--card); border: 1px solid var(--border); border-radius: 11px;
+  padding: 14px 17px; margin-top: 18px; display: flex; align-items: center; gap: 12px;
+}
+.arq-source-ico { font-size: 20px; flex-shrink: 0; }
+.arq-source-text { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.arq-source-text strong { color: var(--text); }
+
+/* Unit Economics — métricas em destaque */
+.ue-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; width: 100%; }
+@media (min-width: 760px) { .ue-grid { grid-template-columns: repeat(4,1fr); } }
+.ue-card { background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 20px 16px; position: relative; overflow: hidden; }
+.ue-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); opacity: .5; }
+.ue-label { font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.ue-formula { font-family: 'Space Mono', monospace; font-size: clamp(11px, 2vw, 13px); color: var(--accent); font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
+.ue-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.ue-bench {
+  background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px 18px; margin-top: 16px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.ue-bench-item { display: flex; align-items: baseline; gap: 6px; }
+.ue-bench-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: clamp(15px,2.5vw,18px); color: var(--white); }
+.ue-bench-lbl { font-size: 11px; color: var(--muted); }
+
+/* Ciência de pipeline */
+.pipe-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+@media (min-width: 760px) { .pipe-grid { flex-direction: row; } }
+.pipe-card { flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px 18px; }
+.pipe-name { font-size: clamp(14px, 2.4vw, 16px); font-weight: 800; color: var(--white); margin-bottom: 8px; }
+.pipe-formula-box { background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 9px; padding: 10px 12px; margin-bottom: 10px; }
+.pipe-formula { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--accent); line-height: 1.6; }
+.pipe-desc { font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+
+/* Pipeline Velocity — versão aprofundada */
+.pv-formula-hero {
+  background: var(--card); border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px; padding: 22px 24px; margin-bottom: 20px;
+  text-align: center;
+}
+.pv-formula-eq { font-family: 'Space Mono', monospace; font-size: clamp(13px, 2.6vw, 18px); color: var(--white); font-weight: 700; line-height: 1.7; }
+.pv-formula-eq .op { color: var(--muted); font-weight: 400; }
+.pv-vars-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; width: 100%; margin-bottom: 18px; }
+@media (min-width: 760px) { .pv-vars-grid { grid-template-columns: repeat(4,1fr); } }
+.pv-var-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 14px; position: relative; overflow: hidden; }
+.pv-var-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); opacity: .35; }
+.pv-var-name { font-size: clamp(11px, 2vw, 12.5px); font-weight: 800; color: var(--white); margin-bottom: 6px; }
+.pv-var-desc { font-size: 10.5px; color: var(--muted); line-height: 1.5; }
+.pv-insight-hdr { font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin: 6px 0 10px; text-align: center; }
+.pv-result-banner {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.16); border-radius: 13px;
+  padding: 14px 18px; margin-top: 14px; text-align: center;
+}
+.pv-result-banner-text { font-size: clamp(12.5px, 2.2vw, 14.5px); color: var(--white); font-weight: 700; line-height: 1.5; }
+.pv-result-banner-text span { color: var(--green); }
+
+/* ── S NÍVEIS DE CONSCIÊNCIA ── */
+.nc-wrap { position: relative; z-index: 1; width: 100%; max-width: 880px; }
+.nc-hdr { text-align: center; margin-bottom: 26px; }
+.nc-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.nc-title { font-size: clamp(26px, 6.5vw, 50px); font-weight: 900; letter-spacing: -.03em; color: var(--white); line-height: .95; margin-bottom: 10px; }
+.nc-title span { color: var(--accent); }
+.nc-sub { font-size: clamp(12px, 2vw, 14px); color: var(--muted); line-height: 1.65; max-width: 560px; margin: 0 auto; }
+.nc-stairs { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.nc-step {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 13px;
+  padding: 16px 18px; position: relative; overflow: hidden;
+}
+@media (min-width: 760px) { .nc-step { padding-left: var(--nc-indent, 18px); } }
+.nc-step::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--nc-clr, var(--muted)); }
+.nc-step-num {
+  font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700;
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--nc-clr, var(--border));
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--nc-clr, var(--text));
+}
+.nc-step-content { flex: 1; }
+.nc-step-name { font-size: clamp(13px, 2.4vw, 15.5px); font-weight: 800; color: var(--white); margin-bottom: 3px; }
+.nc-step-task { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+.nc-step-task strong { color: var(--text); }
+.nc-callout {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 13px;
+  padding: 16px 20px; margin-top: 20px; text-align: center;
+}
+.nc-callout-text { font-size: clamp(12.5px, 2.2vw, 14.5px); color: var(--white); font-weight: 700; line-height: 1.55; }
+
+/* Sales Capacity Planning — cálculo aprofundado */
+.cap-calc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; width: 100%; margin-bottom: 6px; }
+@media (min-width: 760px) { .cap-calc-grid { grid-template-columns: repeat(4,1fr); } }
+.cap-calc-card { background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 16px 14px; position: relative; overflow: hidden; }
+.cap-calc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); opacity: .35; }
+.cap-calc-label { font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
+.cap-calc-value { font-family: 'Space Mono', monospace; font-size: clamp(15px, 2.8vw, 19px); font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.cap-calc-note { font-size: 10px; color: var(--muted); line-height: 1.4; }
+.cap-calc-note.warn { color: var(--green); font-weight: 700; }
+.cap-arrow-down { text-align: center; color: var(--border); font-size: 18px; margin: 4px 0; }
+.cap-final-result {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.18); border-radius: 16px;
+  padding: 22px 24px; text-align: center; margin-top: 8px;
+}
+.cap-final-label { font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.cap-final-num { font-family: 'Space Mono', monospace; font-size: clamp(34px, 8vw, 52px); font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 8px; }
+.cap-final-sub { font-size: clamp(12px, 2.2vw, 14px); color: var(--text); line-height: 1.6; max-width: 480px; margin: 0 auto; }
+.cap-final-sub strong { color: var(--green); }
+
+/* Sales Capacity Planning */
+.cap-flow { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.cap-row { display: flex; align-items: center; gap: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 11px; padding: 14px 18px; }
+.cap-row-ico { font-size: 18px; width: 30px; text-align: center; flex-shrink: 0; opacity: .8; }
+.cap-row-content { flex: 1; }
+.cap-row-name { font-size: 12px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+.cap-row-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.cap-row-arrow { color: var(--border); font-size: 14px; flex-shrink: 0; }
+.cap-result {
+  background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 11px;
+  padding: 16px 18px; margin-top: 6px; text-align: center;
+}
+.cap-result-label { font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.cap-result-text { font-size: clamp(13px, 2.2vw, 16px); font-weight: 800; color: var(--white); }
+
+/* ── S SERVIÇOS ── */
+.serv-wrap { position: relative; z-index: 1; width: 100%; max-width: 1100px; }
+.serv-hdr { text-align: center; margin-bottom: 24px; }
+.serv-title { font-size: clamp(26px, 6.5vw, 56px); font-weight: 900; letter-spacing: -.03em; color: var(--white); line-height: .95; margin-bottom: 10px; }
+.serv-title span { color: var(--accent); }
+.serv-sub { font-size: clamp(12px, 2vw, 14px); color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+.serv-list { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.serv-item {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 13px; padding: 16px 20px; position: relative; overflow: hidden;
+}
+.serv-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--accent); opacity: .4; }
+.serv-num { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); min-width: 22px; flex-shrink: 0; }
+.serv-name { font-size: clamp(13px, 2.4vw, 16px); font-weight: 700; color: var(--white); flex: 1; }
+
+/* ── S DINÂMICA / QR DIAGNÓSTICO ── */
+.din-wrap { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 640px; }
+.din-title { font-size: clamp(26px, 7vw, 56px); font-weight: 900; letter-spacing: -.03em; color: var(--white); line-height: .95; margin-bottom: 14px; }
+.din-title span { color: var(--accent); }
+.din-sub { font-size: clamp(12px, 2.2vw, 15px); color: var(--muted); line-height: 1.65; max-width: 460px; margin-bottom: 28px; }
+.din-qr-block { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 26px; display: inline-flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 22px; }
+.din-qr-inner { background: white; padding: 16px; border-radius: 14px; }
+.din-qr-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .13em; }
+.din-stages-row { display: flex; gap: 6px; justify-content: center; margin-bottom: 18px; flex-wrap: wrap; }
+.din-stage-pill { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; }
+.din-note { font-size: 11.5px; color: var(--muted); line-height: 1.6; max-width: 420px; }
+.din-note strong { color: var(--text); }
 </style>
 </head>
 <body>
 <div class="cursor" id="cursor"></div>
 <nav>
-  <div class="nav-logo">Processo Comercial · Gustavo Benedetti</div>
-  <div class="nav-counter" id="counter">01 / 16</div>
+  <div class="nav-logo">Processo Comercial Avançado · Gustavo Benedetti</div>
+  <div class="nav-counter" id="counter">01 / 23</div>
 </nav>
-<div class="progress-bar"><div class="progress-fill" id="progress" style="width:6.25%"></div></div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:4.35%"></div></div>
 
 <div class="deck">
 
@@ -478,17 +656,17 @@ nav {
       <div class="eng-card-ctx highlight">
         <div class="eng-topbar-ctx" style="background:var(--accent)"></div>
         <div class="eng-icon-wrap-ctx" style="background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">
-          <svg class="gear-rotate-ccw" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <svg class="gear-rotate-ccw" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E5E5E5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </div>
         <div class="eng-num-ctx" style="color:var(--accent)">02</div>
         <div class="eng-title-ctx" style="color:var(--accent)">Processo<br>Comercial</div>
       </div>
       <div class="eng-card-ctx dimmed">
-        <div class="eng-topbar-ctx" style="background:#3B82F6"></div>
+        <div class="eng-topbar-ctx" style="background:#E5E5E5"></div>
         <div class="eng-icon-wrap-ctx" style="background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.2)">
-          <svg class="gear-rotate-cw2" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <svg class="gear-rotate-cw2" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E5E5E5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </div>
-        <div class="eng-num-ctx" style="color:#3B82F6">03</div>
+        <div class="eng-num-ctx" style="color:#E5E5E5">03</div>
         <div class="eng-title-ctx">Construção<br>de Oferta</div>
       </div>
     </div>
@@ -645,13 +823,13 @@ nav {
         <div class="etapa-row-ico">🤝</div>
       </div>
       <div class="etapa-connector"></div>
-      <div class="etapa-row" style="--etapa-clr:#3B82F6;--etapa-w:68%">
+      <div class="etapa-row" style="--etapa-clr:#E5E5E5;--etapa-w:68%">
         <div class="etapa-row-num">04</div>
         <div class="etapa-row-name">Follow-up Programado</div>
         <div class="etapa-row-ico">🔁</div>
       </div>
       <div class="etapa-connector"></div>
-      <div class="etapa-row" style="--etapa-clr:#60A5FA;--etapa-w:56%">
+      <div class="etapa-row" style="--etapa-clr:#F5F5F5;--etapa-w:56%">
         <div class="etapa-row-num">05</div>
         <div class="etapa-row-name">Negociação</div>
         <div class="etapa-row-ico">⚖️</div>
@@ -669,7 +847,7 @@ nav {
 <!-- ═══════════════ S8 — DOCUMENTOS ═══════════════ -->
 <div class="slide" id="s8">
   <div class="grid-bg"></div><div class="noise"></div>
-  <div class="glow-orb" style="width:380px;height:380px;background:#3B82F6;left:-60px;bottom:-40px;"></div>
+  <div class="glow-orb" style="width:380px;height:380px;background:#E5E5E5;left:-60px;bottom:-40px;"></div>
   <div class="docs-wrap">
     <div class="label anim-item">O que sustenta o processo</div>
     <h2 class="docs-title anim-item">Dois documentos <span>fundamentais</span></h2>
@@ -687,12 +865,12 @@ nav {
           <li>Rituais de gestão e reuniões</li>
         </ul>
       </div>
-      <div class="doc-card" style="--doc-clr:#3B82F6">
+      <div class="doc-card" style="--doc-clr:#E5E5E5">
         <div class="doc-icon">🗣️</div>
         <div class="doc-name">Script Comercial</div>
         <div class="doc-desc">Muda conforme o canal de aquisição, o produto e o público. Não é engessamento — é consistência.</div>
         <ul class="doc-items">
-          <li style="color:#3B82F6">Adaptado por canal (tráfego, outbound, indicação)</li>
+          <li style="color:#E5E5E5">Adaptado por canal (tráfego, outbound, indicação)</li>
           <li>Personalizado por produto e ticket</li>
           <li>Linguagem alinhada ao perfil do cliente</li>
           <li>Abertura, desenvolvimento e CTA</li>
@@ -706,12 +884,12 @@ nav {
 <!-- ═══════════════ S9 — DIAGNÓSTICO 01: CRM ═══════════════ -->
 <div class="slide" id="s9">
   <div class="grid-bg"></div><div class="noise"></div>
-  <div class="glow-orb" style="width:360px;height:360px;background:var(--blue);right:-60px;bottom:-40px;"></div>
-  <div class="diag-wrap" style="--diag-clr:var(--blue)">
+  <div class="glow-orb" style="width:360px;height:360px;background:var(--accent);right:-60px;bottom:-40px;"></div>
+  <div class="diag-wrap" style="--diag-clr:var(--accent)">
     <div class="diag-inner">
       <div class="diag-left">
-        <div class="diag-bg-num" style="color:var(--blue)">01</div>
-        <div class="diag-label anim-item" style="color:var(--blue)">Diagnóstico 01</div>
+        <div class="diag-bg-num" style="color:var(--accent)">01</div>
+        <div class="diag-label anim-item" style="color:var(--accent)">Diagnóstico 01</div>
         <div class="diag-title anim-item">Falta de <span>CRM</span><br>e visibilidade</div>
         <p class="diag-desc anim-item">Sem CRM ativo, não existe processo — existe improviso com boa memória. Peter Drucker definiu com precisão: "O que não é medido, não é gerenciado."<br><br>Sem rastrear cada lead, cada etapa e cada prazo, o gestor gerencia na ilusão. E o vendedor opera no achismo.</p>
         <div class="diag-quote anim-item">
@@ -721,11 +899,11 @@ nav {
       </div>
       <div class="diag-right">
         <div class="diag-data-card anim-item">
-          <div class="diag-data-num" style="color:var(--blue)">+29%</div>
+          <div class="diag-data-num" style="color:var(--accent)">+29%</div>
           <div class="diag-data-label">Retenção de clientes em empresas com CRM ativo</div>
         </div>
         <div class="diag-data-card anim-item">
-          <div class="diag-data-num" style="color:var(--blue)">+34%</div>
+          <div class="diag-data-num" style="color:var(--accent)">+34%</div>
           <div class="diag-data-label">Produtividade comercial com gestão via CRM</div>
         </div>
         <div class="diag-question anim-item">
@@ -733,6 +911,52 @@ nav {
           <div class="diag-question-text">Você sabe, agora, quantas oportunidades estão abertas — em qual etapa — e quando foi o último contato com cada uma?</div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S9B — NÍVEIS DE CONSCIÊNCIA ═══════════════ -->
+<div class="slide" id="s9b">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:380px;height:380px;background:var(--accent);left:-70px;bottom:-50px;opacity:.04;"></div>
+  <div class="nc-wrap">
+    <div class="nc-hdr anim-item">
+      <div class="nc-eyebrow">Por que o lead não responde de imediato</div>
+      <h2 class="nc-title">Os 4 níveis de <span>consciência</span></h2>
+      <p class="nc-sub">Nem todo lead está no mesmo ponto de prontidão para comprar. Tratar todos do mesmo jeito é a razão número um pela qual o follow-up falha.</p>
+    </div>
+    <div class="nc-stairs anim-item">
+      <div class="nc-step" style="--nc-clr:#525252; --nc-indent:18px">
+        <div class="nc-step-num">01</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema e não sabe</div>
+          <div class="nc-step-task">Tarefa: <strong>educar</strong> — mostrar que o problema existe, antes de qualquer venda.</div>
+        </div>
+      </div>
+      <div class="nc-step" style="--nc-clr:#737373; --nc-indent:34px">
+        <div class="nc-step-num">02</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema e sabe</div>
+          <div class="nc-step-task">Tarefa: <strong>nomear a dor</strong> — mostrar que existe caminho possível para resolver.</div>
+        </div>
+      </div>
+      <div class="nc-step" style="--nc-clr:#A3A3A3; --nc-indent:50px">
+        <div class="nc-step-num">03</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema, sabe e quer uma solução</div>
+          <div class="nc-step-task">Tarefa: <strong>apresentar possibilidades</strong> — ainda não está comparando fornecedores.</div>
+        </div>
+      </div>
+      <div class="nc-step" style="--nc-clr:var(--accent); --nc-indent:66px">
+        <div class="nc-step-num">04</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema, sabe e está buscando uma solução</div>
+          <div class="nc-step-task">Tarefa: <strong>diferenciação e prova social</strong> — é quem está pronto para comprar agora.</div>
+        </div>
+      </div>
+    </div>
+    <div class="nc-callout anim-item">
+      <div class="nc-callout-text">A maioria dos leads não está no nível 4. Por isso abordagem única e follow-up de uma tacada só falham — cada nível exige uma conversa diferente.</div>
     </div>
   </div>
 </div>
@@ -844,6 +1068,28 @@ nav {
   </div>
 </div>
 
+<!-- ═══════════════ S13B — DINÂMICA / QR DIAGNÓSTICO ═══════════════ -->
+<div class="slide" id="s13b">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:460px;height:460px;background:var(--accent);left:50%;top:50%;transform:translate(-50%,-50%);opacity:.05;"></div>
+  <div class="din-wrap">
+    <div class="label anim-item">Pausa para diagnóstico ao vivo</div>
+    <h2 class="din-title anim-item">Em que estágio<br>está <span>o seu comercial?</span></h2>
+    <p class="din-sub anim-item">Aponte a câmera, responda 8 perguntas rápidas e descubra agora — em tempo real — em qual dos 4 estágios de maturidade comercial a sua empresa está hoje.</p>
+    <div class="din-qr-block anim-item">
+      <div class="din-qr-inner"><canvas id="qr-diagnostico" width="220" height="220"></canvas></div>
+      <div class="din-qr-label">Aponte a câmera</div>
+    </div>
+    <div class="din-stages-row anim-item">
+      <div class="din-stage-pill">01 · Caótico</div>
+      <div class="din-stage-pill">02 · Reativo</div>
+      <div class="din-stage-pill">03 · Estruturado</div>
+      <div class="din-stage-pill">04 · Previsível</div>
+    </div>
+    <p class="din-note anim-item">Ao final, você pode <strong>enviar seu resultado direto pelo WhatsApp</strong> — e eu respondo pessoalmente com o que fazer a seguir.</p>
+  </div>
+</div>
+
 <!-- ═══════════════ S14 — PROCESSO SAUDÁVEL ═══════════════ -->
 <div class="slide" id="s14">
   <div class="grid-bg"></div><div class="noise"></div>
@@ -853,7 +1099,7 @@ nav {
     <h2 class="saudavel-title anim-item">Como um processo<br><span>saudável</span> parece</h2>
     <p class="saudavel-sub anim-item">Processo comercial não é burocracia. É o que liberta o vendedor de depender de talento — para depender de sistema.</p>
     <div class="pilares-wrap anim-item">
-      <div class="pilar-card" style="--pilar-clr:#60A5FA">
+      <div class="pilar-card" style="--pilar-clr:#F5F5F5">
         <div class="pilar-ico">👁️</div>
         <div class="pilar-name">Visibilidade</div>
         <div class="pilar-desc">CRM atualizado em tempo real. Você sabe onde cada oportunidade está e qual é o próximo passo.</div>
@@ -863,7 +1109,7 @@ nav {
           <li>Alertas de prazo vencido</li>
         </ul>
       </div>
-      <div class="pilar-card" style="--pilar-clr:#3B82F6">
+      <div class="pilar-card" style="--pilar-clr:#E5E5E5">
         <div class="pilar-ico">🔁</div>
         <div class="pilar-name">Cadência</div>
         <div class="pilar-desc">Cada etapa tem prazo. Follow-up tem protocolo. Lead sem resposta tem regra de reengajamento.</div>
@@ -887,6 +1133,205 @@ nav {
   </div>
 </div>
 
+<!-- ═══════════════ S14B — ARQUITETURA COMERCIAL ═══════════════ -->
+<div class="slide" id="s14b">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:var(--accent);left:-80px;top:-60px;opacity:.04;"></div>
+  <div class="tec-wrap">
+    <div class="tec-hdr anim-item">
+      <div class="tec-eyebrow">Indo além do diagnóstico</div>
+      <h2 class="tec-title">Arquitetura <span>Comercial</span></h2>
+      <p class="tec-sub">Existem diversos modelos de estrutura comercial. Não há um "certo" universal — existe o que faz sentido para o seu ciclo de vendas, ticket médio e complexidade de produto.</p>
+      <div class="tec-disclaimer">⚠ <span>Este é <strong>um dos modelos possíveis</strong> — não uma regra única</span></div>
+    </div>
+    <div class="arq-flow anim-item">
+      <div class="arq-card" style="--arq-clr:#737373">
+        <div class="arq-num">01 · TOPO DE FUNIL</div>
+        <div class="arq-role">Social Seller</div>
+        <div class="arq-role-en">Social Selling</div>
+        <div class="arq-desc">Constrói autoridade e relação antes do contato direto. Atua via conteúdo e presença em redes — especialmente LinkedIn.</div>
+      </div>
+      <div class="arq-arrow">→</div>
+      <div class="arq-card" style="--arq-clr:#8A8A8A">
+        <div class="arq-num">02 · GERAÇÃO</div>
+        <div class="arq-role">BDR</div>
+        <div class="arq-role-en">Business Development Rep</div>
+        <div class="arq-desc">Gera oportunidades do zero. Outbound puro — prospecção ativa em contas que ainda não conhecem a empresa.</div>
+      </div>
+      <div class="arq-arrow">→</div>
+      <div class="arq-card" style="--arq-clr:#A3A3A3">
+        <div class="arq-num">03 · QUALIFICAÇÃO</div>
+        <div class="arq-role">SDR</div>
+        <div class="arq-role-en">Sales Development Rep</div>
+        <div class="arq-desc">Qualifica o que chega — leads inbound, indicações, respostas de campanha. Prepara a oportunidade para o fechamento.</div>
+      </div>
+      <div class="arq-arrow">→</div>
+      <div class="arq-card" style="--arq-clr:#FAFAFA">
+        <div class="arq-num">04 · FECHAMENTO</div>
+        <div class="arq-role">Closer</div>
+        <div class="arq-role-en">Account Executive</div>
+        <div class="arq-desc">Fecha o negócio já qualificado. Foco total em negociação e conversão — sem o desgaste da prospecção.</div>
+      </div>
+    </div>
+    <div class="arq-source anim-item">
+      <div class="arq-source-ico">📖</div>
+      <div class="arq-source-text"><strong>Referência:</strong> a especialização de papéis comerciais foi popularizada por Aaron Ross em <strong>Receita Previsível</strong> (Predictable Revenue), a partir do modelo "Cold Calling 2.0" implementado na Salesforce. O conceito de Social Seller é evolução de mercado, posterior ao livro original.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S14C — UNIT ECONOMICS ═══════════════ -->
+<div class="slide" id="s14c">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:var(--accent);right:-80px;bottom:-60px;opacity:.04;"></div>
+  <div class="tec-wrap">
+    <div class="tec-hdr anim-item">
+      <div class="tec-eyebrow">A matemática do crescimento</div>
+      <h2 class="tec-title">Unit <span>Economics</span></h2>
+      <p class="tec-sub">Antes de perguntar "quanto vamos vender", a pergunta certa é: "quanto custa cada real de receita que geramos — e isso é sustentável?"</p>
+    </div>
+    <div class="ue-grid anim-item">
+      <div class="ue-card">
+        <div class="ue-label">CAC</div>
+        <div class="ue-formula">Custo Total Aquisição<br>÷ Nº Clientes Fechados</div>
+        <div class="ue-desc">Quanto custa, em média, conquistar um cliente novo — somando marketing e vendas.</div>
+      </div>
+      <div class="ue-card">
+        <div class="ue-label">LTV</div>
+        <div class="ue-formula">Ticket Médio × Margem<br>× Tempo de Retenção</div>
+        <div class="ue-desc">Quanto esse cliente gera de valor ao longo de todo o relacionamento.</div>
+      </div>
+      <div class="ue-card">
+        <div class="ue-label">Razão LTV : CAC</div>
+        <div class="ue-formula">LTV ÷ CAC</div>
+        <div class="ue-desc">O indicador mestre. Mostra se o crescimento é eficiente ou se está queimando caixa.</div>
+      </div>
+      <div class="ue-card">
+        <div class="ue-label">Magic Number</div>
+        <div class="ue-formula">Receita Nova Gerada<br>÷ Investimento Comercial</div>
+        <div class="ue-desc">Mede se cada real investido em vendas está, de fato, gerando crescimento eficiente.</div>
+      </div>
+    </div>
+    <div class="ue-bench anim-item">
+      <div class="ue-bench-item"><span class="ue-bench-num" style="color:var(--green)">3:1</span><span class="ue-bench-lbl">Razão LTV:CAC considerada saudável de mercado</span></div>
+      <div class="ue-bench-item"><span class="ue-bench-num" style="color:var(--red)">&lt;1:1</span><span class="ue-bench-lbl">Empresa perde dinheiro a cada cliente novo</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S14D — CIÊNCIA DE PIPELINE ═══════════════ -->
+<div class="slide" id="s14d">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:var(--accent);left:50%;top:50%;transform:translate(-50%,-50%);opacity:.04;"></div>
+  <div class="tec-wrap">
+    <div class="tec-hdr anim-item">
+      <div class="tec-eyebrow">Prever em vez de torcer</div>
+      <h2 class="tec-title">Pipeline <span>Velocity</span></h2>
+      <p class="tec-sub">A métrica que mostra, em um único número, a velocidade real com que seu pipeline gera receita — e revela onde está a alavanca mais barata de crescimento.</p>
+    </div>
+
+    <div class="pv-formula-hero anim-item">
+      <div class="pv-formula-eq">
+        Velocity <span class="op">=</span> (Oportunidades <span class="op">×</span> Taxa de Conversão <span class="op">×</span> Ticket Médio) <span class="op">÷</span> Ciclo de Vendas
+      </div>
+    </div>
+
+    <div class="pv-vars-grid anim-item">
+      <div class="pv-var-card">
+        <div class="pv-var-name">Oportunidades</div>
+        <div class="pv-var-desc">Volume de negociações abertas no período. A alavanca mais cara — depende de mais canal.</div>
+      </div>
+      <div class="pv-var-card">
+        <div class="pv-var-name">Taxa de Conversão</div>
+        <div class="pv-var-desc">% de oportunidades que viram cliente. Alavanca de processo — barata de melhorar.</div>
+      </div>
+      <div class="pv-var-card">
+        <div class="pv-var-name">Ticket Médio</div>
+        <div class="pv-var-desc">Valor médio fechado por negócio. Mexe com oferta e abordagem de negociação.</div>
+      </div>
+      <div class="pv-var-card" style="border-color:rgba(34,197,94,.3)">
+        <div class="pv-var-name">Ciclo de Vendas</div>
+        <div class="pv-var-desc">Tempo médio do 1º contato ao fechamento. Quanto menor, mais rápido o caixa gira.</div>
+        <div style="margin-top:8px;font-size:9.5px;font-weight:700;color:var(--green);letter-spacing:.03em;">↓ Processo bem definido reduz isso diretamente</div>
+      </div>
+    </div>
+
+    <div class="pv-insight-hdr anim-item" style="font-size:clamp(13px,2.4vw,16px);font-weight:800;color:var(--white);text-transform:none;letter-spacing:normal;margin-bottom:4px;">Processo bem definido não é só sobre converter mais. <span style="color:var(--green)">É sobre converter mais rápido.</span></div>
+    <p style="text-align:center;font-size:11.5px;color:var(--muted);margin-bottom:16px;" class="anim-item">Mesma quantidade de oportunidades abaixo — só o processo mudou:</p>
+    <div class="versus-scenarios anim-item">
+      <div class="scenario-card bad">
+        <div class="scenario-tag">❌ Sem processo definido</div>
+        <div class="scenario-math">
+          <span class="muted">50 oportunidades · </span><span class="key">15% conversão</span><br>
+          <span class="muted">Ticket: </span><span class="key">R$10.000</span><span class="muted"> · Ciclo: </span><span class="key">75 dias</span><br>
+          <span class="muted">Velocity: </span><span class="key">R$1.000/dia</span>
+        </div>
+      </div>
+      <div class="scenario-card good">
+        <div class="scenario-tag">✓ Com processo definido</div>
+        <div class="scenario-math">
+          <span class="muted">50 oportunidades · </span><span class="key">25% conversão</span><br>
+          <span class="muted">Ticket: </span><span class="key">R$10.000</span><span class="muted"> · Ciclo: </span><span class="key">45 dias</span><br>
+          <span class="muted">Velocity: </span><span class="key">R$2.778/dia</span>
+        </div>
+      </div>
+    </div>
+    <div class="pv-result-banner anim-item">
+      <div class="pv-result-banner-text">Mesmo número de oportunidades. <span>Quase 3× mais velocidade de receita.</span> Só elevando conversão e encurtando o ciclo — sem gastar 1 real a mais em aquisição.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S14E — SALES CAPACITY PLANNING ═══════════════ -->
+<div class="slide" id="s14e">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:var(--accent);right:-80px;top:-60px;opacity:.04;"></div>
+  <div class="tec-wrap">
+    <div class="tec-hdr anim-item">
+      <div class="tec-eyebrow">A pergunta de todo empresário em crescimento</div>
+      <h2 class="tec-title">Sales Capacity <span>Planning</span></h2>
+      <p class="tec-sub" style="font-size:clamp(13px,2.3vw,16px);">"Quantos vendedores eu preciso contratar para crescer X% — e quando essa contratação dá retorno?" Isso se calcula. Não se chuta.</p>
+    </div>
+
+    <div class="pv-formula-hero anim-item">
+      <div class="pv-formula-eq" style="font-size:clamp(12px,2.3vw,16px);">
+        Headcount <span class="op">=</span> Meta de Receita <span class="op">÷</span> (Quota por Vendedor <span class="op">×</span> Produtividade Efetiva na Rampa)
+      </div>
+    </div>
+
+    <div class="cap-calc-grid anim-item">
+      <div class="cap-calc-card">
+        <div class="cap-calc-label">Meta de receita adicional</div>
+        <div class="cap-calc-value">R$2,4M</div>
+        <div class="cap-calc-note">por ano</div>
+      </div>
+      <div class="cap-calc-card">
+        <div class="cap-calc-label">Quota anual / vendedor maduro</div>
+        <div class="cap-calc-value">R$600k</div>
+        <div class="cap-calc-note">produtividade plena</div>
+      </div>
+      <div class="cap-calc-card">
+        <div class="cap-calc-label">Tempo de rampa</div>
+        <div class="cap-calc-value">4 meses</div>
+        <div class="cap-calc-note">até quota cheia</div>
+      </div>
+      <div class="cap-calc-card">
+        <div class="cap-calc-label">Produtividade efetiva ano 1</div>
+        <div class="cap-calc-value">83%</div>
+        <div class="cap-calc-note warn">R$500k efetivos — não R$600k</div>
+      </div>
+    </div>
+
+    <div class="cap-arrow-down anim-item">↓</div>
+
+    <div class="cap-final-result anim-item">
+      <div class="cap-final-label">Headcount necessário</div>
+      <div class="cap-final-num">5 vendedores <span style="font-size:.45em;color:var(--muted);font-weight:700;">(executores do processo)</span></div>
+      <div class="cap-final-sub">A conta ingênua (R$2,4M ÷ R$600k) diria <strong>4</strong>. Considerando a rampa real, são <strong>5</strong> — e o 5º precisa ser contratado <strong>4 meses antes</strong> do início do período da meta, não depois que o resultado começar a cair.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════ S15 — SÍNTESE ═══════════════ -->
 <div class="slide" id="s15">
   <div class="grid-bg"></div><div class="noise"></div>
@@ -896,17 +1341,17 @@ nav {
     <h2 class="sintese-title anim-item">Processo comercial<br><span class="hl">que escala</span></h2>
     <div class="sintese-eq anim-item">
       <div class="seq-part">
-        <span class="seq-val" style="color:#60A5FA">Visibilidade<br>Real</span>
+        <span class="seq-val" style="color:#F5F5F5">Visibilidade<br>Real</span>
         <span class="seq-lbl">onde estão os leads</span>
       </div>
       <div class="seq-op">+</div>
       <div class="seq-part">
-        <span class="seq-val" style="color:#3B82F6">Cadência<br>Definida</span>
+        <span class="seq-val" style="color:#E5E5E5">Cadência<br>Definida</span>
         <span class="seq-lbl">como avançam</span>
       </div>
       <div class="seq-op">+</div>
       <div class="seq-part">
-        <span class="seq-val" style="color:#1D4ED8">Gestão<br>Ativa</span>
+        <span class="seq-val" style="color:#A3A3A3">Gestão<br>Ativa</span>
         <span class="seq-lbl">quem acompanha</span>
       </div>
       <div class="seq-op">=</div>
@@ -933,6 +1378,41 @@ nav {
   </div>
 </div>
 
+<!-- ═══════════════ S16B — SERVIÇOS ═══════════════ -->
+<div class="slide" id="s16b">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:420px;height:420px;background:var(--accent);left:50%;top:50%;transform:translate(-50%,-50%);opacity:.04;"></div>
+  <div class="serv-wrap">
+    <div class="serv-hdr anim-item">
+      <div class="label">O que fazemos</div>
+      <h2 class="serv-title">Como podemos <span>trabalhar juntos</span></h2>
+      <p class="serv-sub">Cinco frentes de atuação — isoladas ou combinadas, conforme o estágio e a necessidade da sua operação comercial.</p>
+    </div>
+    <div class="serv-list anim-item">
+      <div class="serv-item">
+        <div class="serv-num">01</div>
+        <div class="serv-name">Implementação de Canais de Aquisição</div>
+      </div>
+      <div class="serv-item">
+        <div class="serv-num">02</div>
+        <div class="serv-name">Desenvolvimento de Processo Comercial</div>
+      </div>
+      <div class="serv-item">
+        <div class="serv-num">03</div>
+        <div class="serv-name">Construção de Oferta</div>
+      </div>
+      <div class="serv-item">
+        <div class="serv-num">04</div>
+        <div class="serv-name">Treinamentos</div>
+      </div>
+      <div class="serv-item">
+        <div class="serv-num">05</div>
+        <div class="serv-name">Implementação de Tecnologia Personalizada</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════ S17 — CTA / IG ═══════════════ -->
 <div class="slide" id="s17">
   <div class="grid-bg"></div><div class="noise"></div>
@@ -952,7 +1432,7 @@ nav {
         <div class="ig-icon">📲</div>
       </div>
       <div class="qr-block">
-        <div class="qr-inner"><canvas id="qr-canvas" width="100" height="100"></canvas></div>
+        <div class="qr-inner"><canvas id="qr-canvas" width="190" height="190"></canvas></div>
         <div class="qr-label">Aponte a câmera</div>
       </div>
     </div>
@@ -971,9 +1451,9 @@ nav {
 </div>
 
 <script>
-const TOTAL = 16;
+const TOTAL = 23;
 let current = 0, busy = false;
-let counterDone = false, barsDone = false, pctDone = false, qrDone = false;
+let counterDone = false, barsDone = false, pctDone = false, qrDone = false, qrDiagDone = false;
 
 /* cursor */
 const curEl = document.getElementById('cursor');
@@ -1011,7 +1491,8 @@ function goTo(target) {
       to.style.transition = to.style.transform = to.style.opacity = '';
       busy = false;
       if (target === 1 && !counterDone) { counterDone = true; animateCounter(); }
-      if (target === 10 && !barsDone) { barsDone = true; setTimeout(animateBars, 600); }
+      if (target === 11 && !barsDone) { barsDone = true; setTimeout(animateBars, 600); }
+      if (target === 13 && !qrDiagDone) { qrDiagDone = true; drawQRDiagnostico(); }
       if (target === TOTAL - 1 && !qrDone) { qrDone = true; drawQR(); }
     }, 440);
   }));
@@ -1116,7 +1597,7 @@ function drawQR() {
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js';
   s.onload = () => {
-    try { new QRious({ element: canvas, value: url, size: 100, background: '#ffffff', foreground: '#070707', level: 'H' }); }
+    try { new QRious({ element: canvas, value: url, size: 190, background: '#ffffff', foreground: '#070707', level: 'H' }); }
     catch(e) { fbQR(canvas); }
   };
   s.onerror = () => fbQR(canvas);
@@ -1124,10 +1605,34 @@ function drawQR() {
 }
 function fbQR(canvas) {
   const ctx = canvas.getContext('2d');
-  ctx.fillStyle='#fff'; ctx.fillRect(0,0,100,100);
-  ctx.fillStyle='#070707'; ctx.font='bold 7px monospace'; ctx.textAlign='center';
-  ctx.fillText('@gustavoobenedetti', 50, 48);
-  ctx.fillText('instagram.com', 50, 62);
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,190,190);
+  ctx.fillStyle='#070707'; ctx.font='bold 13px monospace'; ctx.textAlign='center';
+  ctx.fillText('@gustavoobenedetti', 95, 90);
+  ctx.fillText('instagram.com', 95, 108);
+}
+
+/* ── QR DO DIAGNÓSTICO AO VIVO ── */
+/* ⚠️ AJUSTE A URL ABAIXO depois de hospedar o arquivo diagnostico.html */
+const DIAGNOSTICO_URL = 'https://gustavobenedetti.github.io/diagnostico.html';
+
+function drawQRDiagnostico() {
+  const canvas = document.getElementById('qr-diagnostico');
+  if (!canvas) return;
+  const s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js';
+  s.onload = () => {
+    try { new QRious({ element: canvas, value: DIAGNOSTICO_URL, size: 220, background: '#ffffff', foreground: '#070707', level: 'H' }); }
+    catch(e) { fbQRDiag(canvas); }
+  };
+  s.onerror = () => fbQRDiag(canvas);
+  document.head.appendChild(s);
+}
+function fbQRDiag(canvas) {
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,220,220);
+  ctx.fillStyle='#070707'; ctx.font='bold 14px monospace'; ctx.textAlign='center';
+  ctx.fillText('Diagnóstico', 110, 102);
+  ctx.fillText('Comercial', 110, 122);
 }
 
 updateUI();
