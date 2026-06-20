@@ -203,7 +203,7 @@ nav {
 .armadilha-insight-text { font-size: clamp(12px, 2vw, 14px); color: var(--text); line-height: 1.6; }
 .armadilha-insight-text strong { color: #64748B; }
 .versus-scenarios { display: flex; flex-direction: column; gap: 12px; }
-.scenario-card { border-radius: 13px; padding: 20px 18px; border: 1px solid; position: relative; overflow: hidden; }
+.scenario-card { border-radius: 13px; padding: 16px 18px; border: 1px solid; position: relative; overflow: hidden; }
 .scenario-card.bad { background: rgba(239,68,68,.06); border-color: rgba(239,68,68,.2); }
 .scenario-card.good { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.18); }
 .scenario-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
@@ -499,6 +499,9 @@ nav {
 }
 .pv-result-banner-text { font-size: clamp(12.5px, 2.2vw, 14.5px); color: var(--white); font-weight: 700; line-height: 1.5; }
 .pv-result-banner-text span { color: var(--green); }
+.pv-scenarios-row { display: flex; flex-direction: column; gap: 10px; }
+@media (min-width: 700px) { .pv-scenarios-row { flex-direction: row; } }
+@media (min-width: 700px) { .pv-scenarios-row .scenario-card { flex: 1; padding: 14px 16px; } }
 
 /* ── S NÍVEIS DE CONSCIÊNCIA ── */
 .nc-wrap { position: relative; z-index: 1; width: 100%; max-width: 880px; }
@@ -678,8 +681,8 @@ nav {
   <div class="grid-bg"></div><div class="noise"></div>
   <div class="motores-wrap">
     <div class="label anim-item">A anatomia de toda venda</div>
-    <h2 class="motores-title anim-item">Três motores,<br>uma responsabilidade clara</h2>
-    <p class="motores-sub anim-item">O canal resolve apenas o primeiro motor. Os outros dois dependem exclusivamente do seu processo comercial.</p>
+    <h2 class="motores-title anim-item">03 Responsabilidades</h2>
+    <p class="motores-sub anim-item">O canal resolve apenas a primeira. As outras duas dependem exclusivamente do seu processo comercial.</p>
     <div class="motores-cards anim-item">
       <div class="motor-card" style="opacity:.6;background:var(--card);border-color:rgba(255,255,255,.15);">
         <div class="motor-ico">📡</div>
@@ -693,14 +696,14 @@ nav {
         <div class="motor-name" style="color:var(--accent)">Engajar</div>
         <div class="motor-who" style="color:var(--accent)">Processo Comercial</div>
         <div class="motor-desc">Abordagem, jornada, follow-up. Transforma atenção em interesse.</div>
-        <div class="motor-tag" style="background:rgba(59,130,246,.1);color:var(--accent);border:1px solid rgba(59,130,246,.3)">Processo resolve</div>
+        <div class="motor-tag" style="background:rgba(255,255,255,.1);color:var(--accent);border:1px solid rgba(255,255,255,.3)">Processo resolve</div>
       </div>
       <div class="motor-card active-m">
         <div class="motor-ico">🎯</div>
         <div class="motor-name" style="color:var(--accent)">Converter</div>
         <div class="motor-who" style="color:var(--accent)">Processo Comercial</div>
         <div class="motor-desc">Negociação, fechamento, decisão. Transforma interesse em receita.</div>
-        <div class="motor-tag" style="background:rgba(59,130,246,.1);color:var(--accent);border:1px solid rgba(59,130,246,.3)">Processo resolve</div>
+        <div class="motor-tag" style="background:rgba(255,255,255,.1);color:var(--accent);border:1px solid rgba(255,255,255,.3)">Processo resolve</div>
       </div>
     </div>
   </div>
@@ -768,24 +771,74 @@ nav {
   </div>
 </div>
 
+<!-- ═══════════════ S9B — NÍVEIS DE CONSCIÊNCIA ═══════════════ -->
+<div class="slide" id="s9b">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:380px;height:380px;background:var(--accent);left:-70px;bottom:-50px;opacity:.04;"></div>
+  <div class="nc-wrap">
+    <div class="nc-hdr anim-item">
+      <div class="nc-eyebrow">Antes dos diagnósticos</div>
+      <h2 class="nc-title">Os 4 níveis de <span>consciência</span></h2>
+      <p class="nc-sub">Nem todo lead está no mesmo ponto de prontidão para comprar. É essa diferença que torna CRM, follow-up e gestão tão decisivos a seguir.</p>
+    </div>
+    <div class="nc-stairs anim-item">
+      <div class="nc-step" style="--nc-clr:#525252; --nc-indent:18px">
+        <div class="nc-step-num">01</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema e não sabe</div>
+          <div class="nc-step-task">Tarefa: <strong>educar</strong> — mostrar que o problema existe, antes de qualquer venda.</div>
+        </div>
+      </div>
+      <div class="nc-step" style="--nc-clr:#737373; --nc-indent:34px">
+        <div class="nc-step-num">02</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema e sabe</div>
+          <div class="nc-step-task">Tarefa: <strong>nomear a dor</strong> — mostrar que existe caminho possível para resolver.</div>
+        </div>
+      </div>
+      <div class="nc-step" style="--nc-clr:#A3A3A3; --nc-indent:50px">
+        <div class="nc-step-num">03</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema, sabe e quer uma solução</div>
+          <div class="nc-step-task">Tarefa: <strong>apresentar possibilidades</strong> — ainda não está comparando fornecedores.</div>
+        </div>
+      </div>
+      <div class="nc-step" style="--nc-clr:var(--accent); --nc-indent:66px">
+        <div class="nc-step-num">04</div>
+        <div class="nc-step-content">
+          <div class="nc-step-name">Tem um problema, sabe e está buscando uma solução</div>
+          <div class="nc-step-task">Tarefa: <strong>diferenciação e prova social</strong> — é quem está pronto para comprar agora.</div>
+        </div>
+      </div>
+    </div>
+    <div class="nc-callout anim-item">
+      <div class="nc-callout-text">A maioria dos leads não está no nível 4. Por isso abordagem única e follow-up de uma tacada só falham — cada nível exige uma conversa diferente.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════ S6 — IMPACTO ═══════════════ -->
 <div class="slide" id="s6">
   <div class="grid-bg"></div><div class="noise"></div>
   <div class="glow-orb" style="width:500px;height:500px;background:var(--red);left:50%;top:50%;transform:translate(-50%,-50%);"></div>
   <div class="impacto-wrap">
     <h2 class="impacto-big anim-item">Onde os leads<br><span class="hl">estão morrendo</span></h2>
-    <p class="impacto-sub anim-item">Cinco pontos de diagnóstico. Cada um deles está custando receita — agora.</p>
+    <p class="impacto-sub anim-item">Três pontos de diagnóstico. Cada um te tira de um estágio de maturidade comercial para o próximo.</p>
+    <div class="din-stages-row anim-item" style="margin-bottom:18px;">
+      <div class="din-stage-pill">01 · Caótico</div>
+      <div class="din-stage-pill">02 · Reativo</div>
+      <div class="din-stage-pill">03 · Estruturado</div>
+      <div class="din-stage-pill">04 · Previsível</div>
+    </div>
     <div class="impacto-divider anim-item">
       <div class="impacto-divider-line"></div>
-      <div class="impacto-divider-text">os cinco diagnósticos</div>
+      <div class="impacto-divider-text">os três diagnósticos</div>
       <div class="impacto-divider-line"></div>
     </div>
     <div class="impacto-5 anim-item">
-      <div class="impacto-num-tag lit">01 · CRM</div>
-      <div class="impacto-num-tag lit">02 · Jornada</div>
-      <div class="impacto-num-tag lit">03 · Follow-up</div>
-      <div class="impacto-num-tag lit">04 · Micro-conversão</div>
-      <div class="impacto-num-tag lit">05 · Gestão</div>
+      <div class="impacto-num-tag lit">1 · CRM / Visibilidade</div>
+      <div class="impacto-num-tag lit">2 · Follow-up / Cadência</div>
+      <div class="impacto-num-tag lit">3 · Gestão / Rituais</div>
     </div>
   </div>
 </div>
@@ -844,43 +897,6 @@ nav {
   </div>
 </div>
 
-<!-- ═══════════════ S8 — DOCUMENTOS ═══════════════ -->
-<div class="slide" id="s8">
-  <div class="grid-bg"></div><div class="noise"></div>
-  <div class="glow-orb" style="width:380px;height:380px;background:#E5E5E5;left:-60px;bottom:-40px;"></div>
-  <div class="docs-wrap">
-    <div class="label anim-item">O que sustenta o processo</div>
-    <h2 class="docs-title anim-item">Dois documentos <span>fundamentais</span></h2>
-    <p class="docs-sub anim-item">Processo não existe na cabeça do gestor. Existe no papel — e no comportamento do time.</p>
-    <div class="docs-cards anim-item">
-      <div class="doc-card" style="--doc-clr:var(--accent)">
-        <div class="doc-icon">📋</div>
-        <div class="doc-name">Playbook Comercial</div>
-        <div class="doc-desc">O manual do processo. Instrui o profissional sobre cada detalhe — do que falar ao que registrar.</div>
-        <ul class="doc-items">
-          <li style="color:var(--accent)">Critérios de avanço entre etapas</li>
-          <li>Perguntas-chave para cada fase</li>
-          <li>Como lidar com objeções comuns</li>
-          <li>SLAs e prazos por etapa</li>
-          <li>Rituais de gestão e reuniões</li>
-        </ul>
-      </div>
-      <div class="doc-card" style="--doc-clr:#E5E5E5">
-        <div class="doc-icon">🗣️</div>
-        <div class="doc-name">Script Comercial</div>
-        <div class="doc-desc">Muda conforme o canal de aquisição, o produto e o público. Não é engessamento — é consistência.</div>
-        <ul class="doc-items">
-          <li style="color:#E5E5E5">Adaptado por canal (tráfego, outbound, indicação)</li>
-          <li>Personalizado por produto e ticket</li>
-          <li>Linguagem alinhada ao perfil do cliente</li>
-          <li>Abertura, desenvolvimento e CTA</li>
-          <li>Versões testadas e otimizadas</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ═══════════════ S9 — DIAGNÓSTICO 01: CRM ═══════════════ -->
 <div class="slide" id="s9">
   <div class="grid-bg"></div><div class="noise"></div>
@@ -888,8 +904,8 @@ nav {
   <div class="diag-wrap" style="--diag-clr:var(--accent)">
     <div class="diag-inner">
       <div class="diag-left">
-        <div class="diag-bg-num" style="color:var(--accent)">01</div>
-        <div class="diag-label anim-item" style="color:var(--accent)">Diagnóstico 01</div>
+        <div class="diag-bg-num" style="color:var(--accent)">1</div>
+        <div class="diag-label anim-item" style="color:var(--accent);letter-spacing:.1em;">Diagnóstico 1 de 3 · Caótico → Reativo</div>
         <div class="diag-title anim-item">Falta de <span>CRM</span><br>e visibilidade</div>
         <p class="diag-desc anim-item">Sem CRM ativo, não existe processo — existe improviso com boa memória. Peter Drucker definiu com precisão: "O que não é medido, não é gerenciado."<br><br>Sem rastrear cada lead, cada etapa e cada prazo, o gestor gerencia na ilusão. E o vendedor opera no achismo.</p>
         <div class="diag-quote anim-item">
@@ -915,52 +931,6 @@ nav {
   </div>
 </div>
 
-<!-- ═══════════════ S9B — NÍVEIS DE CONSCIÊNCIA ═══════════════ -->
-<div class="slide" id="s9b">
-  <div class="grid-bg"></div><div class="noise"></div>
-  <div class="glow-orb" style="width:380px;height:380px;background:var(--accent);left:-70px;bottom:-50px;opacity:.04;"></div>
-  <div class="nc-wrap">
-    <div class="nc-hdr anim-item">
-      <div class="nc-eyebrow">Por que o lead não responde de imediato</div>
-      <h2 class="nc-title">Os 4 níveis de <span>consciência</span></h2>
-      <p class="nc-sub">Nem todo lead está no mesmo ponto de prontidão para comprar. Tratar todos do mesmo jeito é a razão número um pela qual o follow-up falha.</p>
-    </div>
-    <div class="nc-stairs anim-item">
-      <div class="nc-step" style="--nc-clr:#525252; --nc-indent:18px">
-        <div class="nc-step-num">01</div>
-        <div class="nc-step-content">
-          <div class="nc-step-name">Tem um problema e não sabe</div>
-          <div class="nc-step-task">Tarefa: <strong>educar</strong> — mostrar que o problema existe, antes de qualquer venda.</div>
-        </div>
-      </div>
-      <div class="nc-step" style="--nc-clr:#737373; --nc-indent:34px">
-        <div class="nc-step-num">02</div>
-        <div class="nc-step-content">
-          <div class="nc-step-name">Tem um problema e sabe</div>
-          <div class="nc-step-task">Tarefa: <strong>nomear a dor</strong> — mostrar que existe caminho possível para resolver.</div>
-        </div>
-      </div>
-      <div class="nc-step" style="--nc-clr:#A3A3A3; --nc-indent:50px">
-        <div class="nc-step-num">03</div>
-        <div class="nc-step-content">
-          <div class="nc-step-name">Tem um problema, sabe e quer uma solução</div>
-          <div class="nc-step-task">Tarefa: <strong>apresentar possibilidades</strong> — ainda não está comparando fornecedores.</div>
-        </div>
-      </div>
-      <div class="nc-step" style="--nc-clr:var(--accent); --nc-indent:66px">
-        <div class="nc-step-num">04</div>
-        <div class="nc-step-content">
-          <div class="nc-step-name">Tem um problema, sabe e está buscando uma solução</div>
-          <div class="nc-step-task">Tarefa: <strong>diferenciação e prova social</strong> — é quem está pronto para comprar agora.</div>
-        </div>
-      </div>
-    </div>
-    <div class="nc-callout anim-item">
-      <div class="nc-callout-text">A maioria dos leads não está no nível 4. Por isso abordagem única e follow-up de uma tacada só falham — cada nível exige uma conversa diferente.</div>
-    </div>
-  </div>
-</div>
-
 <!-- ═══════════════ S11 — DIAGNÓSTICO 03: FOLLOW-UP ═══════════════ -->
 <div class="slide" id="s11">
   <div class="grid-bg"></div><div class="noise"></div>
@@ -968,8 +938,8 @@ nav {
   <div class="diag-wrap" style="--diag-clr:#64748B">
     <div class="diag-inner">
       <div class="diag-left">
-        <div class="diag-bg-num" style="color:#64748B">03</div>
-        <div class="diag-label anim-item" style="color:#64748B">Diagnóstico 03</div>
+        <div class="diag-bg-num" style="color:#64748B">2</div>
+        <div class="diag-label anim-item" style="color:#64748B;letter-spacing:.1em;">Diagnóstico 2 de 3 · Reativo → Estruturado</div>
         <div class="diag-title anim-item">Follow-up<br><span>ignorado</span></div>
         <p class="diag-desc anim-item">Esse é o ponto mais doloroso — e o mais documentado. A maioria das oportunidades não morre por falta de interesse. Morre por abandono comercial.<br><br>Jeb Blount, em Fanatical Prospecting, chama de "lei dos 30 dias": leads sem contato ativo em 30 dias estão estatisticamente mortos para o pipeline.</p>
         <div class="diag-quote anim-item">
@@ -1025,8 +995,8 @@ nav {
   <div class="diag-wrap" style="--diag-clr:#64748B">
     <div class="diag-inner">
       <div class="diag-left">
-        <div class="diag-bg-num" style="color:#64748B">05</div>
-        <div class="diag-label anim-item" style="color:#64748B">Diagnóstico 05</div>
+        <div class="diag-bg-num" style="color:#64748B">3</div>
+        <div class="diag-label anim-item" style="color:#64748B;letter-spacing:.1em;">Diagnóstico 3 de 3 · Estruturado → Previsível</div>
         <div class="diag-title anim-item">Gestão e<br><span>acompanhamento</span></div>
         <p class="diag-desc anim-item">Jason Jordan e Michelle Vazzana, em Cracking the Sales Management Code, identificaram que gestores tentam controlar as métricas erradas — focam em resultado quando deveriam focar nas atividades que geram o resultado.</p>
         <div class="diag-quote anim-item">
@@ -1063,71 +1033,6 @@ nav {
             <div class="v-right"><div class="v-text">Tempo médio de resposta</div></div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════ S13B — DINÂMICA / QR DIAGNÓSTICO ═══════════════ -->
-<div class="slide" id="s13b">
-  <div class="grid-bg"></div><div class="noise"></div>
-  <div class="glow-orb" style="width:460px;height:460px;background:var(--accent);left:50%;top:50%;transform:translate(-50%,-50%);opacity:.05;"></div>
-  <div class="din-wrap">
-    <div class="label anim-item">Pausa para diagnóstico ao vivo</div>
-    <h2 class="din-title anim-item">Em que estágio<br>está <span>o seu comercial?</span></h2>
-    <p class="din-sub anim-item">Aponte a câmera, responda 8 perguntas rápidas e descubra agora — em tempo real — em qual dos 4 estágios de maturidade comercial a sua empresa está hoje.</p>
-    <div class="din-qr-block anim-item">
-      <div class="din-qr-inner"><canvas id="qr-diagnostico" width="220" height="220"></canvas></div>
-      <div class="din-qr-label">Aponte a câmera</div>
-    </div>
-    <div class="din-stages-row anim-item">
-      <div class="din-stage-pill">01 · Caótico</div>
-      <div class="din-stage-pill">02 · Reativo</div>
-      <div class="din-stage-pill">03 · Estruturado</div>
-      <div class="din-stage-pill">04 · Previsível</div>
-    </div>
-    <p class="din-note anim-item">Ao final, você pode <strong>enviar seu resultado direto pelo WhatsApp</strong> — e eu respondo pessoalmente com o que fazer a seguir.</p>
-  </div>
-</div>
-
-<!-- ═══════════════ S14 — PROCESSO SAUDÁVEL ═══════════════ -->
-<div class="slide" id="s14">
-  <div class="grid-bg"></div><div class="noise"></div>
-  <div class="glow-orb" style="width:380px;height:380px;background:var(--accent);left:-60px;bottom:-40px;"></div>
-  <div class="saudavel-wrap">
-    <div class="label anim-item">O que funciona na prática</div>
-    <h2 class="saudavel-title anim-item">Como um processo<br><span>saudável</span> parece</h2>
-    <p class="saudavel-sub anim-item">Processo comercial não é burocracia. É o que liberta o vendedor de depender de talento — para depender de sistema.</p>
-    <div class="pilares-wrap anim-item">
-      <div class="pilar-card" style="--pilar-clr:#F5F5F5">
-        <div class="pilar-ico">👁️</div>
-        <div class="pilar-name">Visibilidade</div>
-        <div class="pilar-desc">CRM atualizado em tempo real. Você sabe onde cada oportunidade está e qual é o próximo passo.</div>
-        <ul class="pilar-items">
-          <li>Pipeline organizado por etapa</li>
-          <li>Histórico completo de cada lead</li>
-          <li>Alertas de prazo vencido</li>
-        </ul>
-      </div>
-      <div class="pilar-card" style="--pilar-clr:#E5E5E5">
-        <div class="pilar-ico">🔁</div>
-        <div class="pilar-name">Cadência</div>
-        <div class="pilar-desc">Cada etapa tem prazo. Follow-up tem protocolo. Lead sem resposta tem regra de reengajamento.</div>
-        <ul class="pilar-items">
-          <li>SLA definido por etapa</li>
-          <li>Cadência de follow-up documentada</li>
-          <li>Critério claro de descarte</li>
-        </ul>
-      </div>
-      <div class="pilar-card" style="--pilar-clr:var(--accent)">
-        <div class="pilar-ico">📅</div>
-        <div class="pilar-name">Rituais de Gestão</div>
-        <div class="pilar-desc">Reunião semanal de pipeline. Não para cobrar número, mas para identificar onde o processo trava e corrigir em tempo real.</div>
-        <ul class="pilar-items">
-          <li>Review semanal de pipeline</li>
-          <li>Indicadores de atividade monitorados</li>
-          <li>Feedback contínuo ao vendedor</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -1180,6 +1085,43 @@ nav {
   </div>
 </div>
 
+<!-- ═══════════════ S8 — DOCUMENTOS ═══════════════ -->
+<div class="slide" id="s8">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:380px;height:380px;background:#E5E5E5;left:-60px;bottom:-40px;"></div>
+  <div class="docs-wrap">
+    <div class="label anim-item">O que sustenta o processo</div>
+    <h2 class="docs-title anim-item">Dois documentos <span>fundamentais</span></h2>
+    <p class="docs-sub anim-item">Processo não existe na cabeça do gestor. Existe no papel — e no comportamento do time.</p>
+    <div class="docs-cards anim-item">
+      <div class="doc-card" style="--doc-clr:var(--accent)">
+        <div class="doc-icon">📋</div>
+        <div class="doc-name">Playbook Comercial</div>
+        <div class="doc-desc">O manual do processo. Instrui o profissional sobre cada detalhe — do que falar ao que registrar.</div>
+        <ul class="doc-items">
+          <li style="color:var(--accent)">Critérios de avanço entre etapas</li>
+          <li>Perguntas-chave para cada fase</li>
+          <li>Como lidar com objeções comuns</li>
+          <li>SLAs e prazos por etapa</li>
+          <li>Rituais de gestão e reuniões</li>
+        </ul>
+      </div>
+      <div class="doc-card" style="--doc-clr:#E5E5E5">
+        <div class="doc-icon">🗣️</div>
+        <div class="doc-name">Script Comercial</div>
+        <div class="doc-desc">Muda conforme o canal de aquisição, o produto e o público. Não é engessamento — é consistência.</div>
+        <ul class="doc-items">
+          <li style="color:#E5E5E5">Adaptado por canal (tráfego, outbound, indicação)</li>
+          <li>Personalizado por produto e ticket</li>
+          <li>Linguagem alinhada ao perfil do cliente</li>
+          <li>Abertura, desenvolvimento e CTA</li>
+          <li>Versões testadas e otimizadas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════ S14C — UNIT ECONOMICS ═══════════════ -->
 <div class="slide" id="s14c">
   <div class="grid-bg"></div><div class="noise"></div>
@@ -1187,7 +1129,7 @@ nav {
   <div class="tec-wrap">
     <div class="tec-hdr anim-item">
       <div class="tec-eyebrow">A matemática do crescimento</div>
-      <h2 class="tec-title">Unit <span>Economics</span></h2>
+      <h2 class="tec-title">Economia <span>Unitária</span></h2>
       <p class="tec-sub">Antes de perguntar "quanto vamos vender", a pergunta certa é: "quanto custa cada real de receita que geramos — e isso é sustentável?"</p>
     </div>
     <div class="ue-grid anim-item">
@@ -1207,7 +1149,7 @@ nav {
         <div class="ue-desc">O indicador mestre. Mostra se o crescimento é eficiente ou se está queimando caixa.</div>
       </div>
       <div class="ue-card">
-        <div class="ue-label">Magic Number</div>
+        <div class="ue-label">Número Mágico</div>
         <div class="ue-formula">Receita Nova Gerada<br>÷ Investimento Comercial</div>
         <div class="ue-desc">Mede se cada real investido em vendas está, de fato, gerando crescimento eficiente.</div>
       </div>
@@ -1224,47 +1166,47 @@ nav {
   <div class="grid-bg"></div><div class="noise"></div>
   <div class="glow-orb" style="width:400px;height:400px;background:var(--accent);left:50%;top:50%;transform:translate(-50%,-50%);opacity:.04;"></div>
   <div class="tec-wrap">
-    <div class="tec-hdr anim-item">
+    <div class="tec-hdr anim-item" style="margin-bottom:14px;">
       <div class="tec-eyebrow">Prever em vez de torcer</div>
-      <h2 class="tec-title">Pipeline <span>Velocity</span></h2>
+      <h2 class="tec-title" style="margin-bottom:6px;">Pipeline <span>Velocity</span></h2>
       <p class="tec-sub">A métrica que mostra, em um único número, a velocidade real com que seu pipeline gera receita — e revela onde está a alavanca mais barata de crescimento.</p>
     </div>
 
-    <div class="pv-formula-hero anim-item">
+    <div class="pv-formula-hero anim-item" style="padding:14px 20px;margin-bottom:12px;">
       <div class="pv-formula-eq">
-        Velocity <span class="op">=</span> (Oportunidades <span class="op">×</span> Taxa de Conversão <span class="op">×</span> Ticket Médio) <span class="op">÷</span> Ciclo de Vendas
+        Velocidade <span class="op">=</span> (Oportunidades <span class="op">×</span> Taxa de Conversão <span class="op">×</span> Ticket Médio) <span class="op">÷</span> Ciclo de Vendas
       </div>
     </div>
 
-    <div class="pv-vars-grid anim-item">
-      <div class="pv-var-card">
-        <div class="pv-var-name">Oportunidades</div>
+    <div class="pv-vars-grid anim-item" style="margin-bottom:10px;">
+      <div class="pv-var-card" style="padding:12px 12px;">
+        <div class="pv-var-name" style="margin-bottom:4px;">Oportunidades</div>
         <div class="pv-var-desc">Volume de negociações abertas no período. A alavanca mais cara — depende de mais canal.</div>
       </div>
-      <div class="pv-var-card">
-        <div class="pv-var-name">Taxa de Conversão</div>
+      <div class="pv-var-card" style="padding:12px 12px;">
+        <div class="pv-var-name" style="margin-bottom:4px;">Taxa de Conversão</div>
         <div class="pv-var-desc">% de oportunidades que viram cliente. Alavanca de processo — barata de melhorar.</div>
       </div>
-      <div class="pv-var-card">
-        <div class="pv-var-name">Ticket Médio</div>
+      <div class="pv-var-card" style="padding:12px 12px;">
+        <div class="pv-var-name" style="margin-bottom:4px;">Ticket Médio</div>
         <div class="pv-var-desc">Valor médio fechado por negócio. Mexe com oferta e abordagem de negociação.</div>
       </div>
-      <div class="pv-var-card" style="border-color:rgba(34,197,94,.3)">
-        <div class="pv-var-name">Ciclo de Vendas</div>
+      <div class="pv-var-card" style="padding:12px 12px;border-color:rgba(34,197,94,.3)">
+        <div class="pv-var-name" style="margin-bottom:4px;">Ciclo de Vendas</div>
         <div class="pv-var-desc">Tempo médio do 1º contato ao fechamento. Quanto menor, mais rápido o caixa gira.</div>
-        <div style="margin-top:8px;font-size:9.5px;font-weight:700;color:var(--green);letter-spacing:.03em;">↓ Processo bem definido reduz isso diretamente</div>
+        <div style="margin-top:6px;font-size:9.5px;font-weight:700;color:var(--green);letter-spacing:.03em;">↓ Processo bem definido reduz isso diretamente</div>
       </div>
     </div>
 
-    <div class="pv-insight-hdr anim-item" style="font-size:clamp(13px,2.4vw,16px);font-weight:800;color:var(--white);text-transform:none;letter-spacing:normal;margin-bottom:4px;">Processo bem definido não é só sobre converter mais. <span style="color:var(--green)">É sobre converter mais rápido.</span></div>
-    <p style="text-align:center;font-size:11.5px;color:var(--muted);margin-bottom:16px;" class="anim-item">Mesma quantidade de oportunidades abaixo — só o processo mudou:</p>
-    <div class="versus-scenarios anim-item">
+    <div class="pv-insight-hdr anim-item" style="font-size:clamp(13px,2.4vw,16px);font-weight:800;color:var(--white);text-transform:none;letter-spacing:normal;margin:4px 0 2px;">Processo bem definido não é só sobre converter mais. <span style="color:var(--green)">É sobre converter mais rápido.</span></div>
+    <p style="text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;" class="anim-item">Mesma quantidade de oportunidades abaixo — só o processo mudou:</p>
+    <div class="versus-scenarios pv-scenarios-row anim-item">
       <div class="scenario-card bad">
         <div class="scenario-tag">❌ Sem processo definido</div>
         <div class="scenario-math">
           <span class="muted">50 oportunidades · </span><span class="key">15% conversão</span><br>
           <span class="muted">Ticket: </span><span class="key">R$10.000</span><span class="muted"> · Ciclo: </span><span class="key">75 dias</span><br>
-          <span class="muted">Velocity: </span><span class="key">R$1.000/dia</span>
+          <span class="muted">Velocidade: </span><span class="key">R$1.000/dia</span>
         </div>
       </div>
       <div class="scenario-card good">
@@ -1272,12 +1214,12 @@ nav {
         <div class="scenario-math">
           <span class="muted">50 oportunidades · </span><span class="key">25% conversão</span><br>
           <span class="muted">Ticket: </span><span class="key">R$10.000</span><span class="muted"> · Ciclo: </span><span class="key">45 dias</span><br>
-          <span class="muted">Velocity: </span><span class="key">R$2.778/dia</span>
+          <span class="muted">Velocidade: </span><span class="key">R$2.778/dia</span>
         </div>
       </div>
     </div>
-    <div class="pv-result-banner anim-item">
-      <div class="pv-result-banner-text">Mesmo número de oportunidades. <span>Quase 3× mais velocidade de receita.</span> Só elevando conversão e encurtando o ciclo — sem gastar 1 real a mais em aquisição.</div>
+    <div class="pv-result-banner anim-item" style="padding:10px 16px;margin-top:8px;">
+      <div class="pv-result-banner-text" style="font-size:clamp(11.5px,2vw,13px);">Mesmo número de oportunidades. <span>Quase 3× mais velocidade de receita.</span> Só elevando conversão e encurtando o ciclo — sem gastar 1 real a mais em aquisição.</div>
     </div>
   </div>
 </div>
@@ -1295,7 +1237,7 @@ nav {
 
     <div class="pv-formula-hero anim-item">
       <div class="pv-formula-eq" style="font-size:clamp(12px,2.3vw,16px);">
-        Headcount <span class="op">=</span> Meta de Receita <span class="op">÷</span> (Quota por Vendedor <span class="op">×</span> Produtividade Efetiva na Rampa)
+        Nº de Vendedores <span class="op">=</span> Meta de Receita <span class="op">÷</span> (Cota por Vendedor <span class="op">×</span> Produtividade Efetiva na Rampa)
       </div>
     </div>
 
@@ -1306,14 +1248,14 @@ nav {
         <div class="cap-calc-note">por ano</div>
       </div>
       <div class="cap-calc-card">
-        <div class="cap-calc-label">Quota anual / vendedor maduro</div>
+        <div class="cap-calc-label">Cota anual / vendedor maduro</div>
         <div class="cap-calc-value">R$600k</div>
         <div class="cap-calc-note">produtividade plena</div>
       </div>
       <div class="cap-calc-card">
         <div class="cap-calc-label">Tempo de rampa</div>
         <div class="cap-calc-value">4 meses</div>
-        <div class="cap-calc-note">até quota cheia</div>
+        <div class="cap-calc-note">até cota cheia</div>
       </div>
       <div class="cap-calc-card">
         <div class="cap-calc-label">Produtividade efetiva ano 1</div>
@@ -1325,9 +1267,74 @@ nav {
     <div class="cap-arrow-down anim-item">↓</div>
 
     <div class="cap-final-result anim-item">
-      <div class="cap-final-label">Headcount necessário</div>
+      <div class="cap-final-label">Nº de vendedores necessário</div>
       <div class="cap-final-num">5 vendedores <span style="font-size:.45em;color:var(--muted);font-weight:700;">(executores do processo)</span></div>
       <div class="cap-final-sub">A conta ingênua (R$2,4M ÷ R$600k) diria <strong>4</strong>. Considerando a rampa real, são <strong>5</strong> — e o 5º precisa ser contratado <strong>4 meses antes</strong> do início do período da meta, não depois que o resultado começar a cair.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S13B — DINÂMICA / QR DIAGNÓSTICO ═══════════════ -->
+<div class="slide" id="s13b">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:460px;height:460px;background:var(--accent);left:50%;top:50%;transform:translate(-50%,-50%);opacity:.05;"></div>
+  <div class="din-wrap">
+    <div class="label anim-item">Pausa para diagnóstico ao vivo</div>
+    <h2 class="din-title anim-item">Em que estágio<br>está <span>o seu comercial?</span></h2>
+    <p class="din-sub anim-item">Aponte a câmera, responda 8 perguntas rápidas e descubra agora — em tempo real — em qual dos 4 estágios de maturidade comercial a sua empresa está hoje.</p>
+    <div class="din-qr-block anim-item">
+      <div class="din-qr-inner"><canvas id="qr-diagnostico" width="220" height="220"></canvas></div>
+      <div class="din-qr-label">Aponte a câmera</div>
+    </div>
+    <div class="din-stages-row anim-item">
+      <div class="din-stage-pill">01 · Caótico</div>
+      <div class="din-stage-pill">02 · Reativo</div>
+      <div class="din-stage-pill">03 · Estruturado</div>
+      <div class="din-stage-pill">04 · Previsível</div>
+    </div>
+    <p class="din-note anim-item">Ao final, você pode <strong>enviar seu resultado direto pelo WhatsApp</strong> — e eu respondo pessoalmente com o que fazer a seguir.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ S14 — PROCESSO SAUDÁVEL ═══════════════ -->
+<div class="slide" id="s14">
+  <div class="grid-bg"></div><div class="noise"></div>
+  <div class="glow-orb" style="width:380px;height:380px;background:var(--accent);left:-60px;bottom:-40px;"></div>
+  <div class="saudavel-wrap">
+    <div class="label anim-item">A base de tudo isso</div>
+    <h2 class="saudavel-title anim-item">Como um processo<br><span>saudável</span> parece</h2>
+    <p class="saudavel-sub anim-item">Arquitetura de time, economia unitária, pipeline velocity, capacity planning — nada disso funciona sem uma base. É aqui que ela mora.</p>
+    <div class="pilares-wrap anim-item">
+      <div class="pilar-card" style="--pilar-clr:#F5F5F5">
+        <div class="pilar-ico">👁️</div>
+        <div class="pilar-name">Visibilidade</div>
+        <div class="pilar-desc">CRM atualizado em tempo real. Você sabe onde cada oportunidade está e qual é o próximo passo.</div>
+        <ul class="pilar-items">
+          <li>Pipeline organizado por etapa</li>
+          <li>Histórico completo de cada lead</li>
+          <li>Alertas de prazo vencido</li>
+        </ul>
+      </div>
+      <div class="pilar-card" style="--pilar-clr:#E5E5E5">
+        <div class="pilar-ico">🔁</div>
+        <div class="pilar-name">Cadência</div>
+        <div class="pilar-desc">Cada etapa tem prazo. Follow-up tem protocolo. Lead sem resposta tem regra de reengajamento.</div>
+        <ul class="pilar-items">
+          <li>SLA definido por etapa</li>
+          <li>Cadência de follow-up documentada</li>
+          <li>Critério claro de descarte</li>
+        </ul>
+      </div>
+      <div class="pilar-card" style="--pilar-clr:var(--accent)">
+        <div class="pilar-ico">📅</div>
+        <div class="pilar-name">Rituais de Gestão</div>
+        <div class="pilar-desc">Reunião semanal de pipeline. Não para cobrar número, mas para identificar onde o processo trava e corrigir em tempo real.</div>
+        <ul class="pilar-items">
+          <li>Review semanal de pipeline</li>
+          <li>Indicadores de atividade monitorados</li>
+          <li>Feedback contínuo ao vendedor</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -1491,8 +1498,8 @@ function goTo(target) {
       to.style.transition = to.style.transform = to.style.opacity = '';
       busy = false;
       if (target === 1 && !counterDone) { counterDone = true; animateCounter(); }
-      if (target === 11 && !barsDone) { barsDone = true; setTimeout(animateBars, 600); }
-      if (target === 13 && !qrDiagDone) { qrDiagDone = true; drawQRDiagnostico(); }
+      if (target === 10 && !barsDone) { barsDone = true; setTimeout(animateBars, 600); }
+      if (target === 17 && !qrDiagDone) { qrDiagDone = true; drawQRDiagnostico(); }
       if (target === TOTAL - 1 && !qrDone) { qrDone = true; drawQR(); }
     }, 440);
   }));
